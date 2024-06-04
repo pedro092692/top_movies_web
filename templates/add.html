@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Movie{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="content">
+        {% if not movies %}
+        <h1 class="heading">Add a Movie</h1>
+            {{ render_form(form, novalidate=True) }}
+        {% else %}
+    </div>
+    <h1 class="heading">Select movie</h1>
+        <ul>
+            {% for movie in movies %}
+              <li><p><a href="{{ url_for('add_movie', movie_id=movie['movie_id']) }}">
+                  {{ movie['movie_title'] }} - {{ movie['movie_release_date'] }}</a></p></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</div>
+{% endblock %}
